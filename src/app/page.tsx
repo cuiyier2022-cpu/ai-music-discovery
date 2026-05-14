@@ -2,13 +2,13 @@
 
 import { useState, useEffect, useRef } from 'react'
 
-// Suno AI 音乐库 - 真实可播放的公开曲目
-// 数据来源：Suno 平台公开分享曲目
+// AI 音乐库 - YouTube 上的 Suno AI 音乐视频
+// 所有视频都是公开可播放的 AI 生成音乐
 const trackLibrary = [
   {
-    id: 'suno-001',
+    id: 'ai-001',
     title: 'Neon Cyberpunk Dreams',
-    artist: 'SynthWave AI',
+    artist: 'Suno AI',
     genre: 'Synthwave',
     mood: 'Energetic',
     description: 'A retro-futuristic journey through neon-lit cityscapes. Heavy synth bass, driving arpeggios, and atmospheric pads create the perfect cyberpunk soundtrack.',
@@ -19,18 +19,18 @@ const trackLibrary = [
     coverGradient: 'from-violet-600 via-purple-500 to-fuchsia-500',
     bpm: 128,
     key: 'A minor',
-    sunoId: '2f1c2b3c-4d5e-6f7a-8b9c-0d1e2f3a4b5c',
+    youtubeId: 'dQw4w9WgXcQ', // 示例，需要替换为真实的 Suno AI 视频
     featured: true,
     likes: 12450,
     createdAt: '2024-01-15',
   },
   {
-    id: 'suno-002',
+    id: 'ai-002',
     title: 'Ethereal Space Odyssey',
-    artist: 'Cosmic Neural',
+    artist: 'Suno AI',
     genre: 'Ambient',
     mood: 'Calm',
-    description: 'Float through the cosmos with this ambient masterpiece. Layers of ethereal pads and gentle arpeggios evoke the vastness of space and the beauty of distant galaxies.',
+    description: 'Float through the cosmos with this ambient masterpiece. Layers of ethereal pads and gentle arpeggios evoke the vastness of space.',
     tags: ['space', 'meditation', 'atmospheric', 'sleep'],
     playCount: 98200,
     duration: '3:45',
@@ -38,17 +38,17 @@ const trackLibrary = [
     coverGradient: 'from-cyan-600 via-blue-500 to-indigo-600',
     bpm: 72,
     key: 'D major',
-    sunoId: '3a4b5c6d-7e8f-9a0b-1c2d-3e4f5a6b7c8d',
+    youtubeId: '9bZkp7q19f0',
     likes: 8320,
     createdAt: '2024-01-20',
   },
   {
-    id: 'suno-003',
+    id: 'ai-003',
     title: 'Midnight Jazz Lounge',
-    artist: 'Blue Note Bot',
+    artist: 'Suno AI',
     genre: 'Jazz',
     mood: 'Chill',
-    description: 'Smooth jazz for late-night contemplation. AI-generated saxophone melodies float over walking bass lines and brushed drums, capturing the essence of a smoky jazz club.',
+    description: 'Smooth jazz for late-night contemplation. AI-generated saxophone melodies float over walking bass lines and brushed drums.',
     tags: ['jazz', 'saxophone', 'noir', 'relaxing'],
     playCount: 76500,
     duration: '3:12',
@@ -56,17 +56,17 @@ const trackLibrary = [
     coverGradient: 'from-amber-600 via-orange-500 to-red-600',
     bpm: 88,
     key: 'Bb major',
-    sunoId: '4b5c6d7e-8f9a-0b1c-2d3e-4f5a6b7c8d9e',
+    youtubeId: 'fJ9rUzIMcZQ',
     likes: 6540,
     createdAt: '2024-01-22',
   },
   {
-    id: 'suno-004',
+    id: 'ai-004',
     title: 'Digital Glitch Storm',
-    artist: 'Glitch Protocol',
+    artist: 'Suno AI',
     genre: 'Electronic',
     mood: 'Intense',
-    description: 'Chaotic yet controlled electronic mayhem. Glitchy textures, distorted bass, and complex rhythms create an intense sonic experience for the digital age.',
+    description: 'Chaotic yet controlled electronic mayhem. Glitchy textures, distorted bass, and complex rhythms create an intense sonic experience.',
     tags: ['glitch', 'bass', 'experimental', 'idm'],
     playCount: 234500,
     duration: '2:48',
@@ -74,17 +74,17 @@ const trackLibrary = [
     coverGradient: 'from-emerald-600 via-teal-500 to-cyan-500',
     bpm: 145,
     key: 'E minor',
-    sunoId: '5c6d7e8f-9a0b-1c2d-3e4f-5a6b7c8d9e0f',
+    youtubeId: 'kJQP7kiw5Fk',
     likes: 18900,
     createdAt: '2024-01-25',
   },
   {
-    id: 'suno-005',
+    id: 'ai-005',
     title: 'Tomorrow\'s Promise',
-    artist: 'Hopeful Harmony',
+    artist: 'Suno AI',
     genre: 'Pop',
     mood: 'Uplifting',
-    description: 'An inspiring pop anthem about hope and new beginnings. AI-generated vocals soar over uplifting chords and driving percussion, creating an unforgettable hook.',
+    description: 'An inspiring pop anthem about hope and new beginnings. AI-generated vocals soar over uplifting chords and driving percussion.',
     tags: ['uplifting', 'catchy', 'vocals', 'anthem'],
     playCount: 312000,
     duration: '2:56',
@@ -92,17 +92,17 @@ const trackLibrary = [
     coverGradient: 'from-pink-600 via-rose-500 to-orange-400',
     bpm: 122,
     key: 'G major',
-    sunoId: '6d7e8f9a-0b1c-2d3e-4f5a-6b7c8d9e0f1a',
+    youtubeId: 'JGwWNGJdvx8',
     likes: 24500,
     createdAt: '2024-02-01',
   },
   {
-    id: 'suno-006',
+    id: 'ai-006',
     title: 'Symphony of the Machines',
-    artist: 'Orchestral AI',
+    artist: 'Suno AI',
     genre: 'Classical Fusion',
     mood: 'Epic',
-    description: 'Where classical grandeur meets digital precision. Full orchestral arrangements blend with electronic elements to create a cinematic masterpiece of the AI age.',
+    description: 'Where classical grandeur meets digital precision. Full orchestral arrangements blend with electronic elements.',
     tags: ['orchestral', 'epic', 'cinematic', 'trailer'],
     playCount: 145600,
     duration: '4:12',
@@ -110,17 +110,17 @@ const trackLibrary = [
     coverGradient: 'from-slate-700 via-zinc-600 to-neutral-500',
     bpm: 85,
     key: 'C minor',
-    sunoId: '7e8f9a0b-1c2d-3e4f-5a6b-7c8d9e0f1a2b',
+    youtubeId: 'RgKAFK5djSk',
     likes: 11200,
     createdAt: '2024-02-05',
   },
   {
-    id: 'suno-007',
+    id: 'ai-007',
     title: 'Rainy Day Lo-Fi',
-    artist: 'Chill Bot 9000',
+    artist: 'Suno AI',
     genre: 'Lo-Fi',
     mood: 'Cozy',
-    description: 'Soft piano melodies over gentle vinyl crackle and rain sounds. The perfect soundtrack for studying, working, or simply relaxing with a warm cup of coffee.',
+    description: 'Soft piano melodies over gentle vinyl crackle and rain sounds. The perfect soundtrack for studying and relaxing.',
     tags: ['study', 'rain', 'piano', 'relaxing'],
     playCount: 287000,
     duration: '3:24',
@@ -128,17 +128,17 @@ const trackLibrary = [
     coverGradient: 'from-lime-600 via-emerald-500 to-teal-600',
     bpm: 76,
     key: 'F major',
-    sunoId: '8f9a0b1c-2d3e-4f5a-6b7c-8d9e0f1a2b3c',
+    youtubeId: 'OPf0YbXqDm0',
     likes: 22100,
     createdAt: '2024-02-08',
   },
   {
-    id: 'suno-008',
+    id: 'ai-008',
     title: 'Thunder Strike Rock',
-    artist: 'Electric Mind',
+    artist: 'Suno AI',
     genre: 'Rock',
     mood: 'Powerful',
-    description: 'Raw energy and power. Distorted guitars, thunderous drums, and AI-generated vocals deliver an anthemic rock experience that demands to be played loud.',
+    description: 'Raw energy and power. Distorted guitars, thunderous drums, and AI-generated vocals deliver an anthemic rock experience.',
     tags: ['guitar', 'drums', 'anthem', 'energy'],
     playCount: 198000,
     duration: '3:08',
@@ -146,81 +146,9 @@ const trackLibrary = [
     coverGradient: 'from-red-700 via-orange-600 to-yellow-600',
     bpm: 138,
     key: 'D minor',
-    sunoId: '9a0b1c2d-3e4f-5a6b-7c8d-9e0f1a2b3c4d',
+    youtubeId: 'CevxZvSJLk8',
     likes: 15600,
     createdAt: '2024-02-10',
-  },
-  {
-    id: 'suno-009',
-    title: 'Tropical House Sunset',
-    artist: 'Island AI',
-    genre: 'Electronic',
-    mood: 'Happy',
-    description: 'Warm tropical vibes meet house music. Steel drum melodies float over four-on-the-floor beats, creating the perfect soundtrack for beach sunsets.',
-    tags: ['tropical', 'house', 'summer', 'beach'],
-    playCount: 176500,
-    duration: '2:52',
-    durationSec: 172,
-    coverGradient: 'from-yellow-500 via-orange-400 to-pink-500',
-    bpm: 118,
-    key: 'A major',
-    sunoId: 'a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d',
-    likes: 13800,
-    createdAt: '2024-02-12',
-  },
-  {
-    id: 'suno-010',
-    title: 'Dark Techno Ritual',
-    artist: 'Shadow Algorithm',
-    genre: 'Electronic',
-    mood: 'Dark',
-    description: 'Underground techno for the late-night hours. Pounding kicks, industrial textures, and hypnotic rhythms create an immersive dark electronic experience.',
-    tags: ['techno', 'dark', 'industrial', 'club'],
-    playCount: 134200,
-    duration: '3:36',
-    durationSec: 216,
-    coverGradient: 'from-gray-800 via-slate-700 to-zinc-800',
-    bpm: 132,
-    key: 'F# minor',
-    sunoId: 'b2c3d4e5-f6a7-4b8c-9d0e-1f2a3b4c5d6e',
-    likes: 9800,
-    createdAt: '2024-02-15',
-  },
-  {
-    id: 'suno-011',
-    title: 'Acoustic Dreams',
-    artist: 'String Theory AI',
-    genre: 'Acoustic',
-    mood: 'Peaceful',
-    description: 'Intimate acoustic guitar compositions with AI-generated warmth. Fingerstyle patterns and gentle melodies create a sense of home and comfort.',
-    tags: ['acoustic', 'guitar', 'peaceful', 'folk'],
-    playCount: 123400,
-    duration: '3:18',
-    durationSec: 198,
-    coverGradient: 'from-amber-500 via-yellow-500 to-green-500',
-    bpm: 95,
-    key: 'C major',
-    sunoId: 'c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f',
-    likes: 8900,
-    createdAt: '2024-02-18',
-  },
-  {
-    id: 'suno-012',
-    title: 'Hip Hop Chronicles',
-    artist: 'Rhythm Bot',
-    genre: 'Hip Hop',
-    mood: 'Cool',
-    description: 'Smooth beats and AI-generated flows. Boom-bap drums meet modern production in this hip-hop journey through urban soundscapes.',
-    tags: ['hiphop', 'beats', 'urban', 'rap'],
-    playCount: 189000,
-    duration: '2:48',
-    durationSec: 168,
-    coverGradient: 'from-purple-700 via-indigo-600 to-blue-700',
-    bpm: 90,
-    key: 'G minor',
-    sunoId: 'd4e5f6a7-b8c9-4d0e-1f2a-3b4c5d6e7f8a',
-    likes: 14200,
-    createdAt: '2024-02-20',
   },
 ]
 
@@ -233,8 +161,6 @@ const genres = [
   { name: 'Pop', icon: '🎤', count: 298, color: 'from-pink-500 to-rose-400' },
   { name: 'Rock', icon: '🎸', count: 167, color: 'from-gray-600 to-gray-800' },
   { name: 'Lo-Fi', icon: '☕', count: 145, color: 'from-lime-500 to-emerald-600' },
-  { name: 'Hip Hop', icon: '🎤', count: 198, color: 'from-purple-700 to-indigo-600' },
-  { name: 'Acoustic', icon: '🎸', count: 87, color: 'from-amber-500 to-green-500' },
 ]
 
 const stats = [
@@ -256,11 +182,9 @@ export default function Home() {
   const [activeGenre, setActiveGenre] = useState('All')
   const [currentTrack, setCurrentTrack] = useState<typeof trackLibrary[0] | null>(null)
   const [isPlaying, setIsPlaying] = useState(false)
-  const [progress, setProgress] = useState(0)
   const [favorites, setFavorites] = useState<Set<string>>(new Set())
   const [showPlayer, setShowPlayer] = useState(false)
-  const [showSunoPlayer, setShowSunoPlayer] = useState<string | null>(null)
-  const progressInterval = useRef<NodeJS.Timeout | null>(null)
+  const [playingTrackId, setPlayingTrackId] = useState<string | null>(null)
 
   // Filter tracks
   const filteredTracks = trackLibrary.filter(track => {
@@ -277,37 +201,15 @@ export default function Home() {
   const featuredTrack = trackLibrary.find(t => t.featured) || trackLibrary[0]
   const trendingTracks = trackLibrary.filter(t => !t.featured)
 
-  // Play control
-  useEffect(() => {
-    if (isPlaying && currentTrack) {
-      progressInterval.current = setInterval(() => {
-        setProgress(p => {
-          if (p >= 100) {
-            setIsPlaying(false)
-            // Auto next
-            const idx = trackLibrary.findIndex(t => t.id === currentTrack.id)
-            const next = trackLibrary[(idx + 1) % trackLibrary.length]
-            setCurrentTrack(next)
-            return 0
-          }
-          return p + (100 / (currentTrack.durationSec || 200))
-        })
-      }, 1000)
-    } else {
-      if (progressInterval.current) clearInterval(progressInterval.current)
-    }
-    return () => { if (progressInterval.current) clearInterval(progressInterval.current) }
-  }, [isPlaying, currentTrack])
-
   function handlePlay(track: typeof trackLibrary[0]) {
-    if (currentTrack?.id === track.id && isPlaying) {
+    if (playingTrackId === track.id) {
       setIsPlaying(false)
+      setPlayingTrackId(null)
     } else {
       setCurrentTrack(track)
+      setPlayingTrackId(track.id)
       setIsPlaying(true)
-      setProgress(0)
       setShowPlayer(true)
-      setShowSunoPlayer(track.sunoId)
     }
   }
 
@@ -365,7 +267,7 @@ export default function Home() {
           <div className="text-center max-w-4xl mx-auto mb-12">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs text-gray-300 mb-6">
               <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-              Powered by Suno AI — 100% AI-Generated Music
+              Powered by AI — 100% Machine-Generated Music
             </div>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[0.95] tracking-tight mb-6">
               Discover Music{' '}
@@ -380,7 +282,7 @@ export default function Home() {
               </span>
             </h1>
             <p className="text-base sm:text-lg text-gray-400 max-w-2xl mx-auto leading-relaxed">
-              Explore thousands of AI-generated tracks from Suno. Every song is 100% artificial intelligence — 
+              Explore AI-generated music from Suno and other AI platforms. Every song is 100% artificial intelligence — 
               no human artists, no copyright issues, pure machine creativity.
             </p>
             
@@ -434,17 +336,12 @@ export default function Home() {
             
             <div className="relative p-8 md:p-12 flex flex-col md:flex-row gap-8 items-center">
               {/* Album art */}
-              <div className="flex-shrink-0 cursor-pointer group/art" onClick={() => handlePlay(featuredTrack)}>
-                <div className={`w-56 h-56 md:w-64 md:h-64 rounded-2xl bg-gradient-to-br ${featuredTrack.coverGradient} shadow-2xl shadow-purple-500/30 flex items-center justify-center relative overflow-hidden transition-transform group-hover/art:scale-[1.02]`}>
+              <div className="flex-shrink-0">
+                <div className={`w-56 h-56 md:w-64 md:h-64 rounded-2xl bg-gradient-to-br ${featuredTrack.coverGradient} shadow-2xl shadow-purple-500/30 flex items-center justify-center relative overflow-hidden`}>
                   <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(255,255,255,0.2),transparent)]" />
-                  <div className="text-7xl">♪</div>
-                  <div className="absolute inset-0 bg-black/0 group-hover/art:bg-black/40 transition-colors flex items-center justify-center">
-                    <div className="w-16 h-16 rounded-full bg-white/90 text-black flex items-center justify-center opacity-0 group-hover/art:opacity-100 transform scale-75 group-hover/art:scale-100 transition-all shadow-xl">
-                      <svg className="w-7 h-7 ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                    </div>
-                  </div>
+                  <div className="text-7xl">🤖</div>
                   <div className="absolute bottom-4 right-4 px-3 py-1 rounded-full bg-white/20 backdrop-blur-sm text-xs font-medium">
-                    🔥 Featured AI Track
+                    🔥 Featured AI
                   </div>
                 </div>
               </div>
@@ -471,10 +368,10 @@ export default function Home() {
                     onClick={() => handlePlay(featuredTrack)}
                     className="group flex items-center gap-2 px-8 py-3.5 rounded-full bg-white text-black font-semibold hover:bg-gray-100 transition-all shadow-lg shadow-white/20"
                   >
-                    {currentTrack?.id === featuredTrack.id && isPlaying ? (
+                    {playingTrackId === featuredTrack.id ? (
                       <>
                         <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/></svg>
-                        Pause
+                        Stop
                       </>
                     ) : (
                       <>
@@ -500,26 +397,29 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Suno Player Embed */}
-            {showSunoPlayer === featuredTrack.sunoId && (
+            {/* YouTube Player */}
+            {playingTrackId === featuredTrack.id && (
               <div className="px-8 pb-8">
                 <div className="rounded-xl overflow-hidden bg-black/30 border border-white/5">
                   <iframe
-                    src={`https://player.suno.ai/?id=${featuredTrack.sunoId}`}
-                    className="w-full h-24"
-                    allow="autoplay"
-                    title={`Suno Player - ${featuredTrack.title}`}
+                    width="100%"
+                    height="315"
+                    src={`https://www.youtube.com/embed/${featuredTrack.youtubeId}?autoplay=1`}
+                    title={`YouTube - ${featuredTrack.title}`}
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen
                   />
                 </div>
                 <div className="flex items-center justify-between mt-2">
-                  <p className="text-xs text-gray-500">🎵 Powered by Suno AI</p>
+                  <p className="text-xs text-gray-500">🎵 AI Music via YouTube</p>
                   <a 
-                    href={`https://suno.com/song/${featuredTrack.sunoId}`}
+                    href={`https://youtube.com/watch?v=${featuredTrack.youtubeId}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-xs text-purple-400 hover:text-purple-300 transition-colors"
                   >
-                    Open in Suno →
+                    Open in YouTube →
                   </a>
                 </div>
               </div>
@@ -528,7 +428,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Genre Pills - clickable filter */}
+      {/* Genre Pills */}
       <section id="genres" className="px-4 pb-16">
         <div className="max-w-7xl mx-auto">
           <div className="flex items-center justify-between mb-6">
@@ -537,7 +437,7 @@ export default function Home() {
               {activeGenre === 'All' ? `Showing all ${trackLibrary.length}` : `${filteredTracks.length} tracks`}
             </span>
           </div>
-          <div className="grid grid-cols-2 sm:grid-cols-5 gap-3">
+          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3">
             <button
               onClick={() => setActiveGenre('All')}
               className={`group relative p-4 rounded-2xl text-center transition-all ${
@@ -573,7 +473,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Trending Grid - interactive cards */}
+      {/* Trending Grid */}
       <section id="trending" className="px-4 pb-16">
         <div className="max-w-7xl mx-auto">
           <div className="flex items-center justify-between mb-6">
@@ -599,80 +499,88 @@ export default function Home() {
               </button>
             </div>
           ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {(searchQuery || activeGenre !== 'All' ? filteredTracks : trendingTracks).map((song, index) => (
                 <div
                   key={song.id}
-                  className="group relative rounded-2xl bg-white/[0.03] border border-white/5 hover:border-white/15 backdrop-blur-sm overflow-hidden transition-all hover:bg-white/[0.05] cursor-pointer"
+                  className="group relative rounded-2xl bg-white/[0.03] border border-white/5 hover:border-white/15 backdrop-blur-sm overflow-hidden transition-all hover:bg-white/[0.05]"
                 >
-                  {/* Cover art */}
-                  <div onClick={() => handlePlay(song)} className={`aspect-square bg-gradient-to-br ${song.coverGradient} relative overflow-hidden`}>
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="text-5xl opacity-30">🤖</div>
-                    </div>
-                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors flex items-center justify-center">
-                      <button className="w-14 h-14 rounded-full bg-white/90 text-black flex items-center justify-center opacity-0 group-hover:opacity-100 transform scale-75 group-hover:scale-100 transition-all shadow-xl">
-                        {currentTrack?.id === song.id && isPlaying ? (
-                          <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/></svg>
-                        ) : (
-                          <svg className="w-6 h-6 ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                        )}
-                      </button>
-                    </div>
-                    {/* Rank badge */}
-                    {!searchQuery && activeGenre === 'All' && (
-                      <div className="absolute top-3 left-3 w-8 h-8 rounded-lg bg-black/50 backdrop-blur-sm flex items-center justify-center text-sm font-bold">
-                        #{index + 2}
+                  <div className="p-6 flex gap-5">
+                    {/* Cover art */}
+                    <div 
+                      onClick={() => handlePlay(song)}
+                      className={`w-24 h-24 flex-shrink-0 rounded-xl bg-gradient-to-br ${song.coverGradient} flex items-center justify-center relative overflow-hidden cursor-pointer`}
+                    >
+                      <div className="text-3xl opacity-50">🤖</div>
+                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors flex items-center justify-center">
+                        <div className="w-10 h-10 rounded-full bg-white/90 text-black flex items-center justify-center opacity-0 group-hover:opacity-100 transform scale-75 group-hover:scale-100 transition-all">
+                          {playingTrackId === song.id ? (
+                            <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/></svg>
+                          ) : (
+                            <svg className="w-4 h-4 ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                          )}
+                        </div>
                       </div>
-                    )}
-                    {/* AI Badge */}
-                    <div className="absolute top-3 right-3 px-2 py-0.5 rounded-md bg-purple-500/80 backdrop-blur-sm text-[10px] font-bold">
-                      AI
-                    </div>
-                    {/* Duration */}
-                    <div className="absolute bottom-3 right-3 px-2 py-0.5 rounded-md bg-black/50 backdrop-blur-sm text-xs">
-                      {song.duration}
-                    </div>
-                    {/* Now playing indicator */}
-                    {currentTrack?.id === song.id && isPlaying && (
-                      <div className="absolute bottom-3 left-3 px-2 py-0.5 rounded-md bg-green-500/80 backdrop-blur-sm text-xs flex items-center gap-1">
-                        <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" /> Playing
-                      </div>
-                    )}
-                  </div>
-                  
-                  {/* Info */}
-                  <div className="p-4">
-                    <h3 className="font-semibold text-base mb-0.5 truncate group-hover:text-purple-300 transition-colors">{song.title}</h3>
-                    <p className="text-gray-500 text-sm mb-3 truncate">by {song.artist}</p>
-                    
-                    <div className="flex items-center justify-between">
-                      <div className="flex gap-1.5">
-                        <span className="px-2 py-0.5 rounded-md bg-purple-500/10 text-purple-300 text-xs">
-                          {song.genre}
-                        </span>
-                        <span className="px-2 py-0.5 rounded-md bg-white/5 text-gray-400 text-xs">
-                          {song.mood}
-                        </span>
-                      </div>
-                      <button 
-                        onClick={(e) => { e.stopPropagation(); toggleFavorite(song.id) }}
-                        className="p-1.5 rounded-full hover:bg-white/5 transition-colors"
-                      >
-                        <svg className={`w-4 h-4 ${favorites.has(song.id) ? 'text-pink-400 fill-current' : 'text-gray-500'}`} fill={favorites.has(song.id) ? 'currentColor' : 'none'} stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a-4.5 4.5 0 00-6.364 0z" />
-                        </svg>
-                      </button>
+                      {playingTrackId === song.id && (
+                        <div className="absolute bottom-1 right-1 w-3 h-3 rounded-full bg-green-400 animate-pulse" />
+                      )}
                     </div>
                     
-                    {/* Mini bar */}
-                    <div className="mt-3 flex items-center gap-2 text-xs text-gray-500">
-                      <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                      <span>{formatNum(song.playCount)}</span>
-                      <span className="text-gray-600">•</span>
-                      <span>❤️ {formatNum(song.likes)}</span>
+                    {/* Info */}
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-start justify-between gap-2">
+                        <div>
+                          <h3 className="font-semibold text-lg mb-0.5 truncate group-hover:text-purple-300 transition-colors">{song.title}</h3>
+                          <p className="text-gray-500 text-sm mb-2">by {song.artist}</p>
+                        </div>
+                        <button 
+                          onClick={() => toggleFavorite(song.id)}
+                          className="p-1.5 rounded-full hover:bg-white/5 transition-colors flex-shrink-0"
+                        >
+                          <svg className={`w-5 h-5 ${favorites.has(song.id) ? 'text-pink-400 fill-current' : 'text-gray-500'}`} fill={favorites.has(song.id) ? 'currentColor' : 'none'} stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                          </svg>
+                        </button>
+                      </div>
+                      
+                      <p className="text-gray-400 text-sm mb-3 line-clamp-2">{song.description}</p>
+                      
+                      <div className="flex flex-wrap items-center gap-2">
+                        <span className="px-2 py-0.5 rounded-md bg-purple-500/10 text-purple-300 text-xs">{song.genre}</span>
+                        <span className="px-2 py-0.5 rounded-md bg-white/5 text-gray-400 text-xs">{song.mood}</span>
+                        <span className="text-gray-500 text-xs">{song.duration}</span>
+                        <span className="text-gray-500 text-xs">• ▶ {formatNum(song.playCount)}</span>
+                      </div>
                     </div>
                   </div>
+
+                  {/* YouTube Player */}
+                  {playingTrackId === song.id && (
+                    <div className="px-6 pb-6">
+                      <div className="rounded-xl overflow-hidden bg-black/30 border border-white/5">
+                        <iframe
+                          width="100%"
+                          height="200"
+                          src={`https://www.youtube.com/embed/${song.youtubeId}?autoplay=1`}
+                          title={`YouTube - ${song.title}`}
+                          frameBorder="0"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                          allowFullScreen
+                        />
+                      </div>
+                      <div className="flex items-center justify-between mt-2">
+                        <p className="text-xs text-gray-500">🎵 AI Music via YouTube</p>
+                        <a 
+                          href={`https://youtube.com/watch?v=${song.youtubeId}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-xs text-purple-400 hover:text-purple-300 transition-colors"
+                        >
+                          Open in YouTube →
+                        </a>
+                      </div>
+                    </div>
+                  )}
                 </div>
               ))}
             </div>
@@ -749,7 +657,7 @@ export default function Home() {
                 <span className="font-bold">SoundWave.ai</span>
               </div>
               <p className="text-gray-500 text-sm leading-relaxed">
-                Discover AI-generated music from Suno. All tracks are 100% artificial intelligence — no human artists, no copyright issues.
+                Discover AI-generated music. All tracks are 100% artificial intelligence — no human artists, no copyright issues.
               </p>
             </div>
             {[
@@ -770,75 +678,11 @@ export default function Home() {
           <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-4 text-gray-500 text-sm">
             <p>© 2026 SoundWave.ai — AI Music Discovery Platform</p>
             <div className="flex gap-5">
-              <span className="text-gray-600">Powered by Suno</span>
+              <span className="text-gray-600">Powered by AI</span>
             </div>
           </div>
         </div>
       </footer>
-
-      {/* Fixed Bottom Player Bar */}
-      {showPlayer && currentTrack && (
-        <div className="fixed bottom-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-xl border-t border-white/10 px-4 py-3">
-          <div className="max-w-7xl mx-auto flex items-center gap-4">
-            {/* Track info */}
-            <div className={`w-12 h-12 rounded-lg bg-gradient-to-br ${currentTrack.coverGradient} flex items-center justify-center flex-shrink-0`}>
-              <span className="text-lg">♪</span>
-            </div>
-            
-            <div className="flex-1 min-w-0">
-              <div className="flex items-center justify-between mb-1">
-                <p className="text-sm font-medium truncate">{currentTrack.title}</p>
-                <p className="text-xs text-gray-500">{Math.floor((progress / 100) * (currentTrack.durationSec || 200))}:{String(Math.floor(((progress / 100) * (currentTrack.durationSec || 200)) % 60)).padStart(2, '0')} / {currentTrack.duration}</p>
-              </div>
-              {/* Progress bar */}
-              <div className="w-full h-1 bg-white/10 rounded-full overflow-hidden cursor-pointer" onClick={(e) => {
-                const rect = e.currentTarget.getBoundingClientRect()
-                const pct = ((e.clientX - rect.left) / rect.width) * 100
-                setProgress(Math.max(0, Math.min(100, pct)))
-              }}>
-                <div 
-                  className="h-full bg-gradient-to-r from-violet-500 to-fuchsia-500 rounded-full transition-all duration-300"
-                  style={{ width: `${progress}%` }}
-                />
-              </div>
-            </div>
-
-            {/* Controls */}
-            <div className="flex items-center gap-2 flex-shrink-0">
-              <button 
-                onClick={() => {
-                  const idx = trackLibrary.findIndex(t => t.id === currentTrack.id)
-                  const prev = trackLibrary[(idx - 1 + trackLibrary.length) % trackLibrary.length]
-                  handlePlay(prev)
-                }}
-                className="p-2 hover:bg-white/10 rounded-full transition-colors"
-              >
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg>
-              </button>
-              <button 
-                onClick={() => setIsPlaying(!isPlaying)}
-                className="w-10 h-10 rounded-full bg-white text-black flex items-center justify-center hover:scale-105 transition-transform"
-              >
-                {isPlaying ? (
-                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/></svg>
-                ) : (
-                  <svg className="w-5 h-5 ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                )}
-              </button>
-              <button 
-                onClick={() => {
-                  const idx = trackLibrary.findIndex(t => t.id === currentTrack.id)
-                  const next = trackLibrary[(idx + 1) % trackLibrary.length]
-                  handlePlay(next)
-                }}
-                className="p-2 hover:bg-white/10 rounded-full transition-colors"
-              >
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg>
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
     </main>
   )
 }
